@@ -1,0 +1,17 @@
+[Unit]
+Description=Webchat Robo %i
+AssertPathExists=/usr/local/webchat/bin/whatsapp
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+ExecStart=/usr/local/webchat/bin/whatsapp --data %i
+Restart=on-failure
+StandardError=syslog+journal
+StandardOutput=syslog+journal
+SyslogIdentifier=webchat
+
+[Install]
+WantedBy=multi-user.target
+
